@@ -1,70 +1,68 @@
-import { motion } from "framer-motion";
-import { UserCircle, Cpu, Sparkles } from "lucide-react";
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Icons } from "@/components/ui/icons"
+import { ReactNode } from 'react'
 
-const steps = [
-  {
-    icon: UserCircle,
-    title: "Enter Your Birth Details",
-    description: "We generate your full natal chart using accurate ephemeris data.",
-    step: "01",
-  },
-  {
-    icon: Cpu,
-    title: "AI Analyzes Your Chart",
-    description: "Our engine compares your chart with live planetary positions.",
-    step: "02",
-  },
-  {
-    icon: Sparkles,
-    title: "Get Personalized Insights",
-    description: "Daily, weekly, monthly, yearly predictions — and a chat assistant.",
-    step: "03",
-  },
-];
-
-const HowItWorks = () => {
-  return (
-    <section id="how-it-works" className="py-24 relative">
-      <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="text-primary font-medium mb-3 text-sm tracking-wide uppercase">How It Works</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Three simple steps to clarity
-          </h2>
-        </motion.div>
-        
-        <div className="grid md:grid-cols-3 gap-8">
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="relative group"
-            >
-              <div className="p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-500">
-                <span className="text-6xl font-bold text-secondary/80 absolute top-6 right-6">
-                  {step.step}
-                </span>
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <step.icon className="w-7 h-7 text-primary" />
+export default function HowItWorks() {
+    return (
+        <section id="how-it-works" className="py-16 md:py-32 bg-background">
+            <div className="container mx-auto max-w-5xl px-6">
+                <div className="text-center mb-16">
+                    <p className="text-primary font-medium mb-3 text-sm tracking-wide uppercase">How It Works</p>
+                    <h2 className="text-balance text-3xl md:text-5xl font-bold text-foreground">Three simple steps to clarity</h2>
+                    <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">Discover your cosmic path with our advanced AI astrology engine.</p>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">{step.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{step.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+                
+                <div className="mx-auto mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:mt-16">
+                    <Card className="group border-border/50 bg-card/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300">
+                        <CardHeader className="pb-3">
+                            <CardDecorator>
+                                <Icons.zap className="size-6 text-primary" strokeWidth={1.5} aria-hidden />
+                            </CardDecorator>
 
-export default HowItWorks;
+                            <h3 className="mt-6 font-medium text-xl text-foreground">Enter Your Details</h3>
+                        </CardHeader>
+
+                        <CardContent>
+                            <p className="text-sm text-muted-foreground leading-relaxed">Simply enter your birth date, time, and location. We generate your full natal chart using accurate ephemeris data.</p>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="group border-border/50 bg-card/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300">
+                        <CardHeader className="pb-3">
+                            <CardDecorator>
+                                <Icons.settings2 className="size-6 text-primary" strokeWidth={1.5} aria-hidden />
+                            </CardDecorator>
+
+                            <h3 className="mt-6 font-medium text-xl text-foreground">AI Analysis</h3>
+                        </CardHeader>
+
+                        <CardContent>
+                            <p className="text-sm text-muted-foreground leading-relaxed">Our advanced AI engine analyzes your chart, comparing it with live planetary positions to find unique patterns.</p>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="group border-border/50 bg-card/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300">
+                        <CardHeader className="pb-3">
+                            <CardDecorator>
+                                <Icons.sparkles className="size-6 text-primary" strokeWidth={1.5} aria-hidden />
+                            </CardDecorator>
+
+                            <h3 className="mt-6 font-medium text-xl text-foreground">Get Insights</h3>
+                        </CardHeader>
+
+                        <CardContent>
+                            <p className="text-sm text-muted-foreground leading-relaxed">Receive personalized daily, weekly, and monthly predictions, along with a chat assistant to answer your questions.</p>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+const CardDecorator = ({ children }: { children: ReactNode }) => (
+    <div aria-hidden className="relative mx-auto size-36 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]">
+        <div className="absolute inset-0 [--border:black] dark:[--border:white] bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:24px_24px] opacity-10"/>
+        <div className="bg-background absolute inset-0 m-auto flex size-12 items-center justify-center border-t border-l border-border rounded-xl shadow-sm">{children}</div>
+    </div>
+)

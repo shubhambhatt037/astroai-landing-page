@@ -9,14 +9,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 shadow-lg shadow-primary/25",
+        default: "bg-primary/90 backdrop-blur-sm text-primary-foreground hover:bg-primary hover:scale-105 shadow-lg shadow-primary/25 border border-primary/20",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline: "border border-border bg-transparent hover:bg-secondary hover:border-primary/50 text-foreground",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-secondary hover:text-foreground text-muted-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 shadow-lg shadow-primary/30 px-8 py-6 text-base font-semibold",
-        heroOutline: "border border-muted-foreground/30 bg-transparent hover:bg-secondary hover:border-primary/50 text-foreground px-8 py-6 text-base font-medium",
+        hero: "bg-primary/90 backdrop-blur-sm text-primary-foreground hover:bg-primary hover:scale-105 shadow-lg shadow-primary/30 px-8 py-6 text-base font-semibold border border-primary/20",
+        heroOutline: "border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-primary/50 text-foreground px-8 py-6 text-base font-medium transition-all duration-300",
+        glass: "bg-white/10 backdrop-blur-md border border-white/20 text-foreground hover:bg-white/20 shadow-sm transition-all duration-300",
+        glassOutline: "bg-transparent backdrop-blur-sm border border-white/20 text-foreground hover:bg-white/10 hover:border-white/30 shadow-sm transition-all duration-300",
       },
       size: {
         default: "h-10 px-5 py-2",
